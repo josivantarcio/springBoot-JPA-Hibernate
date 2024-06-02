@@ -95,4 +95,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-Jôsevan Tárcio Silva de Oliveira - [LinkedIn](https://www.linkedin.com/in/your-linkedin-profile/)
+Jôsevan Tárcio Silva de Oliveira - [LinkedIn](https://www.linkedin.com/in/josevanoliveirati/)
