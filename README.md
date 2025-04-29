@@ -1,98 +1,107 @@
-# Sales Application
+# Sistema de Gerenciamento de Pedidos
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![JPA](https://img.shields.io/badge/JPA-4B7BE5?style=for-the-badge&logo=java&logoColor=white)
-![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white)
+Este é um sistema de gerenciamento de pedidos desenvolvido com Spring Boot, JPA/Hibernate e PostgreSQL.
 
-## Description
+## Funcionalidades
 
-This project is a sales application developed during a bootcamp. It uses Java, Spring, JPA, and Hibernate to create a robust and scalable application for managing products, orders, and customers.
+- Gerenciamento de usuários (CRUD)
+- Gerenciamento de pedidos (CRUD)
+- Gerenciamento de produtos (CRUD)
+- Gerenciamento de categorias (CRUD)
+- Associação de produtos a categorias
+- Cálculo de total de pedidos
+- Tratamento de exceções personalizado
 
-## Features
+## Tecnologias Utilizadas
 
-- **Product Management:** Add, edit, and remove products from the catalog.
-- **Customer Management:** Register new customers and update existing information.
-- **Order Management:** Create, update, and view purchase orders.
-- **Authentication and Authorization:** Use Spring Security to ensure application security.
+- Java 17
+- Spring Boot 3.0.0
+- Spring Data JPA
+- Hibernate
+- PostgreSQL
+- Maven
+- JUnit 5
+- Mockito
 
-## Entities
+## Estrutura do Projeto
 
-- **Category:** Product categories.
-- **Order:** Customer orders.
-- **OrderItem:** Individual items within an order.
-- **Payment:** Payment information for orders.
-- **Product:** Products available for sale.
-- **User:** System users.
+```
+src/
+├── main/
+│   ├── java/
+│   │   └── com/educandoweb/course/
+│   │       ├── config/         # Configurações do projeto
+│   │       ├── entities/       # Entidades JPA
+│   │       ├── repositories/   # Repositórios JPA
+│   │       ├── resources/      # Controladores REST
+│   │       └── services/       # Lógica de negócio
+│   └── resources/
+│       └── application.properties
+└── test/
+    └── java/
+        └── com/educandoweb/course/
+            └── services/       # Testes unitários
+```
 
-## Project Structure
+## Configuração do Ambiente
 
-The project is divided into the following modules:
+1. Clone o repositório
+2. Configure o banco de dados PostgreSQL:
+   - Crie um banco de dados chamado `springboot_course`
+   - Configure as credenciais no arquivo `application.properties`
+3. Execute o projeto:
+   ```bash
+   mvn spring-boot:run
+   ```
 
-- **entities:** Contains the entity classes that represent the application's data.
-- **repositories:** Contains the repository interfaces for data access.
-- **services:** Contains the service classes that implement business logic.
-- **resources:** Contains the REST controllers that expose the API.
-- **config:** Contains the Spring configuration classes.
+## Endpoints da API
 
-## Technologies Used
+### Usuários
+- `GET /users` - Lista todos os usuários
+- `GET /users/{id}` - Busca usuário por ID
+- `POST /users` - Cria novo usuário
+- `PUT /users/{id}` - Atualiza usuário
+- `DELETE /users/{id}` - Remove usuário
 
-- **Java:** Main programming language of the project.
-- **Spring Framework:** Used to simplify and enhance the development of Java applications.
-- **Spring Boot:** Eases project setup and configuration.
-- **JPA (Java Persistence API):** Provides a standard way to map Java objects to relational databases.
-- **Hibernate:** JPA implementation for data management.
-- **Spring Security:** Framework for implementing authentication and authorization.
+### Pedidos
+- `GET /orders` - Lista todos os pedidos
+- `GET /orders/{id}` - Busca pedido por ID
 
-## Prerequisites
+### Produtos
+- `GET /products` - Lista todos os produtos
+- `GET /products/{id}` - Busca produto por ID
 
-To run this project, you will need to have installed:
+### Categorias
+- `GET /categories` - Lista todas as categorias
+- `GET /categories/{id}` - Busca categoria por ID
 
-- [Java JDK 17+](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
-- [Maven](https://maven.apache.org/)
-- [PostgreSQL](https://www.postgresql.org/) (or another database of your choice)
+## Tratamento de Exceções
 
-## How to Run
+O sistema possui tratamento personalizado para as seguintes exceções:
+- `ResourceNotFoundException` - Quando um recurso não é encontrado
+- `DatabaseException` - Quando ocorre erro de integridade no banco de dados
 
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/your-username/your-repository.git
-    cd your-repository
-    ```
+## Testes
 
-2. Configure the database in `application.properties`:
-    ```properties
-    spring.datasource.url=jdbc:postgresql://localhost:5432/your-database
-    spring.datasource.username=your-username
-    spring.datasource.password=your-password
-    spring.jpa.hibernate.ddl-auto=update
-    ```
+O projeto inclui testes unitários para todos os serviços:
+- UserServiceTest
+- OrderServiceTest
+- ProductServiceTest
+- CategoryServiceTest
 
-3. Compile and run the project with Maven:
-    ```bash
-    mvn clean install
-    mvn spring-boot:run
-    ```
+Para executar os testes:
+```bash
+mvn test
+```
 
-4. Access the application:
-    ```
-    http://localhost:8080
-    ```
+## Contribuição
 
-## Contributions
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-Contributions are welcome! If you wish to contribute to this project, please follow these steps:
+## Licença
 
-1. Fork the repository.
-2. Create a branch for your feature: `git checkout -b my-feature`
-3. Commit your changes: `git commit -m 'Add my feature'`
-4. Push to the branch: `git push origin my-feature`
-5. Open a Pull Request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-
-Jôsevan Tárcio Silva de Oliveira - [LinkedIn](https://www.linkedin.com/in/josevanoliveirati/)
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

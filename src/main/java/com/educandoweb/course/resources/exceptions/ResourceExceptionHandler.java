@@ -12,9 +12,21 @@ import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+/**
+ * Classe responsável por tratar exceções lançadas pelos controladores REST.
+ * Implementa um tratamento centralizado de exceções, convertendo-as em respostas HTTP apropriadas.
+ */
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
+	/**
+	 * Trata exceções do tipo ResourceNotFoundException.
+	 * Retorna uma resposta HTTP 404 (Not Found) com detalhes do erro.
+	 *
+	 * @param e Exceção lançada
+	 * @param request Requisição HTTP que causou a exceção
+	 * @return ResponseEntity contendo os detalhes do erro
+	 */
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
 		String error = "Resource not found";
@@ -23,6 +35,14 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(status).body(err);
 	}
 	
+	/**
+	 * Trata exceções do tipo DatabaseException.
+	 * Retorna uma resposta HTTP 400 (Bad Request) com detalhes do erro.
+	 *
+	 * @param e Exceção lançada
+	 * @param request Requisição HTTP que causou a exceção
+	 * @return ResponseEntity contendo os detalhes do erro
+	 */
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request) {
 		String error = "Database error";
